@@ -30,39 +30,39 @@ export const JobDetailSheet: React.FC<JobDetailSheetProps> = ({
   return (
     <div
       className={cn(
-        "fixed inset-0 z-40 flex items-end justify-center bg-black/60 backdrop-blur-sm",
-        "md:items-center md:bg-black/70"
+        "fixed inset-0 z-40 flex items-end justify-center bg-black/70 backdrop-blur-md",
+        "md:items-center"
       )}
       aria-modal="true"
       role="dialog"
     >
       <Card
         className={cn(
-          "relative flex max-h-[90vh] w-full max-w-md flex-col rounded-t-3xl bg-slate-950/98 p-4 text-slate-100 shadow-2xl",
+          "relative flex max-h-[90vh] w-full max-w-md flex-col rounded-t-3xl border border-purple-900/60 bg-[#05000d]/98 p-3.5 text-slate-100 shadow-[0_22px_70px_rgba(0,0,0,0.95)]",
           "md:rounded-3xl"
         )}
       >
-        <div className="mb-3 flex items-center justify-between gap-3">
+        <div className="mb-2.5 flex items-start justify-between gap-3">
           <div className="flex flex-col">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-sky-400/80">
+            <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-purple-400/85">
               {job.company}
             </span>
-            <h2 className="mt-0.5 text-[17px] font-semibold tracking-[-0.02em] text-slate-50">
+            <h2 className="mt-0.5 text-[16px] font-semibold tracking-[-0.02em] text-slate-50">
               {job.title}
             </h2>
-            <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[10px] text-slate-400">
-              <span className="rounded-full bg-slate-900/90 px-2 py-1 leading-none">
+            <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[9px] text-purple-200/80">
+              <span className="rounded-full bg-[#030008] px-2 py-0.5 leading-none">
                 {job.location}
               </span>
               {job.isRemote && (
-                <span className="rounded-full bg-emerald-500/15 px-2 py-1 leading-none text-emerald-400">
+                <span className="rounded-full bg-purple-900/40 px-2 py-0.5 leading-none text-purple-300">
                   Remote
                 </span>
               )}
-              <span className="rounded-full bg-slate-900/90 px-2 py-1 leading-none text-sky-400">
+              <span className="rounded-full bg-[#030008] px-2 py-0.5 leading-none text-purple-300/90">
                 {job.employmentType}
               </span>
-              <span className="rounded-full bg-slate-900/90 px-2 py-1 leading-none text-indigo-400">
+              <span className="rounded-full bg-[#030008] px-2 py-0.5 leading-none text-fuchsia-300/90">
                 {job.salary}
               </span>
             </div>
@@ -72,79 +72,78 @@ export const JobDetailSheet: React.FC<JobDetailSheetProps> = ({
             variant="ghost"
             size="icon"
             aria-label="Close job details"
-            className="h-9 w-9 rounded-full bg-slate-900/90 text-slate-400 hover:bg-slate-800"
+            className="mt-0.5 h-7 w-7 rounded-full bg-[#090016] text-[11px] text-purple-300/85 hover:bg-purple-900/50 hover:text-purple-100"
             onClick={onClose}
           >
-            ✕
+            ×
           </Button>
         </div>
 
-        <div className="mb-3 flex flex-wrap gap-1.5 text-[9px] text-slate-400">
+        <div className="mb-2 flex flex-wrap gap-1.5 text-[8px] text-purple-200/80">
           {job.tags?.map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-slate-950/95 px-2 py-1 leading-none"
+              className="rounded-full bg-[#030008] px-2 py-0.5 leading-none"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="custom-scroll -mx-1 flex-1 space-y-2 overflow-y-auto px-1 pb-4 text-[11px] leading-relaxed text-slate-300">
+        <div className="custom-scroll -mx-1 flex-1 space-y-1.5 overflow-y-auto px-1 pb-3 text-[10px] leading-snug text-purple-100/90">
           <p>
-            Join <span className="font-semibold text-sky-400">{job.company}</span> as a
+            Join <span className="font-semibold text-purple-400">{job.company}</span> as a
             {" "}
-            <span className="font-semibold text-slate-50">{job.title}</span>. You will
-            collaborate with a tight-knit team to build polished, production-grade
-            experiences with modern tooling and a culture that values craft.
+            <span className="font-semibold text-slate-50">{job.title}</span>. Work with a
+            focused team shipping polished, production-grade experiences.
           </p>
-          <p className="text-slate-400">
-            Ideal candidates are comfortable owning features end-to-end, working in
-            async environments, and shipping quickly without compromising quality.
+          <p className="text-purple-200/80">
+            Own features end-to-end, iterate quickly, and help shape a high-trust,
+            async-first culture.
           </p>
-          <ul className="ml-4 list-disc space-y-1">
-            <li>3+ years relevant experience (or equivalent portfolio).</li>
-            <li>Strong communication and collaboration skills.</li>
-            <li>Fluency with modern web stacks and design systems.</li>
-            <li>Comfort working across time zones with distributed teams.</li>
+          <ul className="ml-4 list-disc space-y-0.5">
+            <li>3+ years relevant experience or an outstanding portfolio.</li>
+            <li>Strong communication skills across distributed teams.</li>
+            <li>Hands-on expertise with modern product tooling.</li>
+            <li>Bias for shipping and learning fast.</li>
           </ul>
-          <p className="text-slate-400">
-            Benefits include competitive compensation, flexible schedule, remote-first
-            culture, and a learning budget to grow your skills.
+          <p className="text-purple-200/80">
+            Benefits include competitive compensation, flexible working, and dedicated
+            learning support.
           </p>
         </div>
 
-        <div className="mt-2 flex flex-col gap-2 border-t border-slate-800/80 pt-3">
-          <div className="flex items-center gap-2">
+        <div className="mt-2 flex flex-col gap-1.5 border-t border-purple-900/60 pt-2.5">
+          <div className="flex items-center gap-1.5">
             <Button
               type="button"
               onClick={onToggleSave}
               className={cn(
-                "h-11 flex-1 rounded-2xl text-[12px] font-semibold",
+                "h-9 flex-1 rounded-2xl text-[11px] font-semibold",
                 isSaved
-                  ? "bg-emerald-500 text-slate-950 hover:bg-emerald-400"
-                  : "bg-sky-500 text-slate-950 hover:bg-sky-400"
+                  ? "bg-purple-600 text-slate-950 hover:bg-purple-500"
+                  : "bg-gradient-to-r from-violet-500 to-fuchsia-500 text-slate-950 hover:from-violet-400 hover:to-fuchsia-400"
               )}
             >
-              {isSaved ? "Saved" : "Save to shortlist"}
+              {isSaved ? "Saved to shortlist" : "Save to shortlist"}
             </Button>
             <Button
               type="button"
               onClick={onMarkApplied}
               className={cn(
-                "h-11 flex-1 rounded-2xl text-[12px] font-semibold",
+                "h-9 flex-1 rounded-2xl text-[11px] font-semibold",
                 isApplied
-                  ? "bg-slate-800 text-emerald-400 hover:bg-slate-700"
-                  : "bg-indigo-500 text-slate-950 hover:bg-indigo-400"
+                  ? "bg-[#0b0219] text-purple-300 hover:bg-[#0d031f]"
+                  : "bg-purple-900 text-purple-100 hover:bg-purple-800"
               )}
             >
-              {isApplied ? "Applied" : "Mark as applied"}
+              {isApplied ? "Marked as applied" : "Mark as applied"}
             </Button>
           </div>
           <Button
             type="button"
             variant="ghost"
-            className="h-10 rounded-2xl text-[11px] text-slate-400 hover:bg-slate-900"
+            className="h-8 rounded-2xl text-[10px] text-purple-300/85 hover:bg-purple-950/40"
             onClick={onClose}
           >
             Close

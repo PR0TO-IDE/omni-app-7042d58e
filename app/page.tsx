@@ -41,7 +41,7 @@ const seedJobs: Job[] = [
     isRemote: true,
     salary: "$140k - $180k",
     employmentType: "Full-time",
-    tags: ["TypeScript", "Next.js", "Node"] ,
+    tags: ["TypeScript", "Next.js", "Node"],
   },
   {
     id: "pocket-03",
@@ -121,7 +121,6 @@ export default function HomePage() {
 
   const [hydrated, setHydrated] = useState(false)
 
-  // Hydrate state from localStorage on mount
   useEffect(() => {
     let mounted = true
     const load = async () => {
@@ -166,7 +165,6 @@ export default function HomePage() {
     }
   }, [])
 
-  // Persist saved jobs, applications, and recent search
   useEffect(() => {
     if (!hydrated) return
     api.set(SAVED_KEY, savedJobIds)
@@ -267,7 +265,7 @@ export default function HomePage() {
   const savedCount = savedJobIds.length
 
   return (
-    <main className="flex min-h-screen flex-col bg-black px-3 pb-4 pt-3 text-slate-50">
+    <main className="flex min-h-screen flex-col bg-transparent pb-4 pt-1 text-slate-50">
       <JobSearchBar
         keyword={keyword}
         location={location}
@@ -286,15 +284,15 @@ export default function HomePage() {
         onReset={handleResetFilters}
       />
 
-      <section className="mt-3 flex-1 overflow-y-auto pb-20">
-        <div className="mb-2 flex items-baseline justify-between text-[10px] text-slate-500">
+      <section className="mt-2 flex-1 overflow-y-auto pb-16">
+        <div className="mb-1.5 flex items-baseline justify-between text-[9px] text-purple-300/70">
           <span>
             {filteredJobs.length} role{filteredJobs.length === 1 ? "" : "s"} found
           </span>
           {keyword || location || employmentType || salaryRange || remoteOnly ? (
-            <span className="text-sky-400">Filters active</span>
+            <span className="text-fuchsia-400/90">Filters active</span>
           ) : (
-            <span className="text-slate-500">Curated for you</span>
+            <span className="text-purple-500/70">Curated for you</span>
           )}
         </div>
         <div>
@@ -308,52 +306,53 @@ export default function HomePage() {
             />
           ))}
           {hydrated && filteredJobs.length === 0 && (
-            <div className="mt-6 rounded-2xl bg-slate-950/95 p-4 text-center text-[11px] text-slate-400">
+            <div className="mt-4 rounded-2xl border border-purple-900/60 bg-[#050010]/98 p-3.5 text-center text-[10px] text-purple-200/80 shadow-[0_14px_40px_rgba(0,0,0,0.9)]">
               <p className="font-medium text-slate-100">
                 No roles match your filters yet.
               </p>
-              <p className="mt-1 text-slate-400">
-                Try broadening your search keyword, expanding locations, or lowering the
-                salary minimum.
+              <p className="mt-0.5 text-purple-200/80">
+                Try broadening your search, explore more locations, or relax the salary
+                minimum.
               </p>
               <Button
                 type="button"
-                className="mt-3 h-10 rounded-2xl bg-slate-800 text-[11px] text-slate-100 hover:bg-slate-700"
+                className="mt-2 h-8 rounded-2xl text-[10px]"
                 onClick={() => {
                   handleClearSearch()
                   handleResetFilters()
                 }}
               >
-                Reset search & filters
+                Reset search and filters
               </Button>
             </div>
           )}
         </div>
       </section>
 
-      <div className="pointer-events-none fixed inset-x-0 bottom-2 z-30 flex justify-center">
+      <div className="pointer-events-none fixed inset-x-0 bottom-1.5 z-30 flex justify-center">
         <div className="pointer-events-auto flex w-full max-w-md items-center px-3">
           <Button
             type="button"
             onClick={() => router.push("/saved")}
             className={cn(
-              "flex h-12 flex-1 items-center justify-between rounded-2xl bg-slate-950/98 px-4 text-[11px] font-semibold text-slate-50 shadow-2xl",
-              savedCount > 0
-                ? "border border-emerald-500/40 bg-emerald-500/15 text-emerald-300"
-                : "border border-slate-800/90 bg-slate-950/98 text-slate-300"
+              "flex h-10 flex-1 items-center justify-between rounded-2xl border border-purple-900/70 bg-[#04000d]/98 px-3 text-[9px] font-semibold text-purple-100/90 shadow-[0_14px_40px_rgba(0,0,0,0.9)]",
+              savedCount > 0 &&
+                "border-purple-500/80 bg-gradient-to-r from-violet-600/20 to-fuchsia-500/10 text-fuchsia-200"
             )}
           >
             <div className="flex flex-col text-left">
-              <span className="text-[9px] font-medium uppercase tracking-[0.16em] text-slate-500">
+              <span className="text-[7px] font-medium uppercase tracking-[0.16em] text-purple-500/80">
                 Saved
               </span>
               <span>
                 {savedCount > 0
                   ? `${savedCount} job${savedCount === 1 ? "" : "s"} in your pocket`
-                  : "No saved jobs yet"}
+                  : "Save roles you love to review later"}
               </span>
             </div>
-            <span className="ml-2 text-[13px]">↗</span>
+            <span className="ml-2 text-[11px] text-fuchsia-400">
+              ↗
+            </span>
           </Button>
         </div>
       </div>

@@ -27,8 +27,8 @@ export const JobFiltersBar: React.FC<JobFiltersBarProps> = ({
   onReset,
 }) => {
   return (
-    <div className="mt-3 flex w-full flex-nowrap items-center gap-2 overflow-x-auto pb-1">
-      <div className="flex flex-nowrap items-center gap-1.5">
+    <div className="mt-2 flex w-full flex-nowrap items-center gap-1.5 overflow-x-auto pb-1">
+      <div className="flex flex-nowrap items-center gap-1">
         {EMPLOYMENT_TYPES.map((type) => {
           const active = employmentType === type || (type === "All" && employmentType === "")
           return (
@@ -36,11 +36,12 @@ export const JobFiltersBar: React.FC<JobFiltersBarProps> = ({
               key={type}
               type="button"
               variant={active ? "default" : "outline"}
+              size="sm"
               className={cn(
-                "h-9 rounded-full px-3 text-[10px] font-medium tracking-wide",
+                "rounded-full px-2.5 text-[9px]",
                 active
-                  ? "bg-sky-500 text-slate-950 hover:bg-sky-400"
-                  : "border-slate-700/60 bg-black/60 text-slate-300 hover:bg-slate-900"
+                  ? "bg-gradient-to-r from-violet-500 to-fuchsia-500 text-slate-950"
+                  : "border-purple-900/70 bg-[#03000a] text-purple-200/80 hover:bg-purple-950/40"
               )}
               onClick={() => onEmploymentTypeChange(type === "All" ? "" : type)}
             >
@@ -49,7 +50,7 @@ export const JobFiltersBar: React.FC<JobFiltersBarProps> = ({
           )
         })}
       </div>
-      <div className="flex flex-nowrap items-center gap-1.5">
+      <div className="flex flex-nowrap items-center gap-1">
         {SALARY_RANGES.map((range) => {
           const active = salaryRange === range || (range === "Any" && salaryRange === "")
           return (
@@ -57,15 +58,16 @@ export const JobFiltersBar: React.FC<JobFiltersBarProps> = ({
               key={range}
               type="button"
               variant={active ? "default" : "outline"}
+              size="sm"
               className={cn(
-                "h-9 rounded-full px-3 text-[10px] font-medium",
+                "rounded-full px-2.5 text-[9px]",
                 active
-                  ? "bg-emerald-500 text-slate-950 hover:bg-emerald-400"
-                  : "border-slate-700/60 bg-black/60 text-slate-300 hover:bg-slate-900"
+                  ? "bg-gradient-to-r from-fuchsia-500 to-violet-500 text-slate-950"
+                  : "border-purple-900/70 bg-[#03000a] text-purple-200/80 hover:bg-purple-950/40"
               )}
               onClick={() => onSalaryRangeChange(range === "Any" ? "" : range)}
             >
-              {range === "Any" ? "Any salary" : range}
+              {range === "Any" ? "Any" : range}
             </Button>
           )
         })}
@@ -73,11 +75,12 @@ export const JobFiltersBar: React.FC<JobFiltersBarProps> = ({
       <Button
         type="button"
         variant={remoteOnly ? "default" : "outline"}
+        size="sm"
         className={cn(
-          "ml-1 h-9 rounded-full px-3 text-[10px] font-semibold",
+          "ml-0.5 rounded-full px-2.5 text-[9px]",
           remoteOnly
-            ? "bg-indigo-500 text-slate-950 hover:bg-indigo-400"
-            : "border-slate-700/60 bg-black/60 text-slate-300 hover:bg-slate-900"
+            ? "bg-gradient-to-r from-purple-500 to-fuchsia-500 text-slate-950"
+            : "border-purple-900/70 bg-[#03000a] text-purple-200/80 hover:bg-purple-950/40"
         )}
         onClick={onRemoteToggle}
       >
@@ -86,7 +89,8 @@ export const JobFiltersBar: React.FC<JobFiltersBarProps> = ({
       <Button
         type="button"
         variant="ghost"
-        className="ml-1 h-9 rounded-full px-3 text-[9px] font-medium text-slate-400 hover:bg-slate-900 hover:text-slate-100"
+        size="sm"
+        className="ml-0.5 rounded-full px-2.5 text-[8px] font-medium text-purple-300/80 hover:bg-purple-950/40 hover:text-purple-100"
         onClick={onReset}
       >
         Reset

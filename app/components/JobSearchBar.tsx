@@ -25,14 +25,14 @@ export const JobSearchBar: React.FC<JobSearchBarProps> = ({
   }
 
   return (
-    <div className="w-full space-y-2 rounded-3xl bg-gradient-to-b from-slate-950/95 to-slate-900/80 p-3 shadow-lg">
-      <div className="flex items-baseline justify-between gap-2">
+    <div className="w-full space-y-1.5 rounded-3xl bg-gradient-to-b from-[#0b0219] to-[#05010f] p-3 shadow-[0_14px_40px_rgba(0,0,0,0.6)] ring-1 ring-purple-900/40">
+      <div className="flex items-center justify-between gap-2">
         <div className="flex flex-col">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-sky-400/80">
+          <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-purple-400/80">
             PocketJobs
           </span>
-          <h1 className="mt-0.5 text-[18px] font-semibold tracking-[-0.02em] text-slate-50">
-            Find your next role.
+          <h1 className="mt-0.5 text-[17px] font-semibold tracking-[-0.02em] text-slate-50">
+            Curated roles in your pocket.
           </h1>
         </div>
         <Button
@@ -40,42 +40,40 @@ export const JobSearchBar: React.FC<JobSearchBarProps> = ({
           variant="ghost"
           size="icon"
           aria-label="Clear search fields"
-          className="h-9 w-9 rounded-full bg-slate-900/80 text-xs text-slate-400 hover:bg-slate-800"
+          className="h-7 w-7 rounded-full bg-[#0f061c] text-[13px] text-purple-300/80 hover:bg-purple-900/40 hover:text-purple-200"
           onClick={handleClear}
         >
-          ⟳
+          
         </Button>
       </div>
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-2">
-          <div className="flex-1">
-            <Input
-              value={keyword}
-              onChange={(e) => onKeywordChange(e.target.value)}
-              placeholder="Role or company"
-              className={cn(
-                "h-11 w-full rounded-2xl border-none bg-slate-950/90 px-3 text-[13px] text-slate-100 placeholder:text-slate-500",
-                "focus-visible:ring-1 focus-visible:ring-sky-500/80"
-              )}
-            />
-          </div>
+      <div className="mt-1 flex flex-col gap-1.5">
+        <div className="flex items-center gap-1.5">
+          <Input
+            value={keyword}
+            onChange={(e) => onKeywordChange(e.target.value)}
+            placeholder="Role or company"
+            className={cn(
+              "h-9 flex-1 rounded-2xl border-none bg-[#04000d]/90 px-3 text-[12px] text-slate-100 placeholder:text-purple-500/40",
+              "focus-visible:ring-1 focus-visible:ring-purple-500/80"
+            )}
+          />
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           <Input
             value={location}
             onChange={(e) => onLocationChange(e.target.value)}
             placeholder="Location or Remote"
             className={cn(
-              "h-11 flex-1 rounded-2xl border-none bg-slate-950/90 px-3 text-[13px] text-slate-100 placeholder:text-slate-500",
-              "focus-visible:ring-1 focus-visible:ring-sky-500/80"
+              "h-9 flex-1 rounded-2xl border-none bg-[#04000d]/90 px-3 text-[12px] text-slate-100 placeholder:text-purple-500/40",
+              "focus-visible:ring-1 focus-visible:ring-purple-500/80"
             )}
           />
           <Button
             type="button"
             variant="default"
-            className="h-11 min-w-[72px] rounded-2xl bg-sky-500 text-[12px] font-semibold tracking-wide text-slate-950 hover:bg-sky-400"
+            className="h-9 min-w-[70px] rounded-2xl text-[11px] font-semibold tracking-wide"
             onClick={() => {
-              /* Primary CTA intentionally kept as no-op; search is live as user types. */
+              // search is reactive via inputs
             }}
           >
             Search

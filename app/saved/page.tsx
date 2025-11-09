@@ -151,52 +151,51 @@ export default function SavedJobsPage() {
   )
 
   return (
-    <main className="flex min-h-screen flex-col bg-black px-3 pb-4 pt-3 text-slate-50">
-      <header className="mb-3 flex items-center justify-between gap-3">
+    <main className="flex min-h-screen flex-col bg-transparent pb-4 pt-1 text-slate-50">
+      <header className="mb-2.5 flex items-center justify-between gap-2">
         <Button
           type="button"
           variant="ghost"
           size="icon"
           aria-label="Back to job search"
-          className="h-10 w-10 rounded-full bg-slate-950/90 text-slate-300 hover:bg-slate-900"
+          className="h-8 w-8 rounded-full bg-[#050011]/95 text-[12px] text-purple-200 hover:bg-purple-950/60"
           onClick={() => router.push("/")}
         >
           ←
         </Button>
-        <div className="flex flex-col flex-1">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-sky-400/80">
+        <div className="flex flex-1 flex-col">
+          <span className="text-[8px] font-semibold uppercase tracking-[0.18em] text-purple-400/85">
             PocketJobs
           </span>
-          <h1 className="text-[18px] font-semibold tracking-[-0.02em] text-slate-50">
+          <h1 className="text-[16px] font-semibold tracking-[-0.02em] text-slate-50">
             Saved roles
           </h1>
         </div>
         <div className="flex flex-col items-end text-right">
-          <span className="text-[9px] uppercase tracking-[0.16em] text-slate-500">
+          <span className="text-[7px] uppercase tracking-[0.16em] text-purple-500/80">
             Total
           </span>
-          <span className="text-[13px] font-semibold text-emerald-400">
+          <span className="text-[12px] font-semibold text-fuchsia-300">
             {savedJobs.length}
           </span>
         </div>
       </header>
 
-      <section className="flex-1 overflow-y-auto">
+      <section className="flex-1 overflow-y-auto pb-2">
         {savedJobs.length === 0 && hydrated && (
-          <div className="mt-8 rounded-3xl bg-slate-950/98 p-5 text-center text-[11px] text-slate-400">
-            <p className="text-[12px] font-semibold text-slate-100">
-              Nothing saved yet.
+          <div className="mt-6 rounded-3xl border border-purple-900/60 bg-[#050010]/98 p-4 text-center text-[10px] text-purple-200/85 shadow-[0_18px_50px_rgba(0,0,0,0.95)]">
+            <p className="text-[11px] font-semibold text-slate-50">
+              No saved roles yet.
             </p>
-            <p className="mt-1">
-              Browse roles on the main screen and tap the star icon to keep them in
-              your pocket.
+            <p className="mt-0.5">
+              Tap the star on any role to keep it in your Pocket.
             </p>
             <Button
               type="button"
-              className="mt-4 h-11 rounded-2xl bg-sky-500 text-[11px] font-semibold text-slate-950 hover:bg-sky-400"
+              className="mt-2 h-8 rounded-2xl text-[10px]"
               onClick={() => router.push("/")}
             >
-              Discover roles
+              Browse roles
             </Button>
           </div>
         )}
@@ -213,15 +212,15 @@ export default function SavedJobsPage() {
                     onPress={() => {}}
                     onToggleSave={() => toggleSave(job.id)}
                   />
-                  <div className="absolute bottom-2 right-3 flex items-center gap-1">
+                  <div className="absolute bottom-1.5 right-2.5 flex items-center gap-1.5">
                     <Button
                       type="button"
                       size="sm"
                       className={cn(
-                        "h-8 rounded-full px-3 text-[9px] font-semibold",
+                        "h-7 rounded-full px-2.5 text-[8px] font-semibold",
                         isApplied
-                          ? "bg-slate-900 text-emerald-400 hover:bg-slate-800"
-                          : "bg-indigo-500 text-slate-950 hover:bg-indigo-400"
+                          ? "bg-[#050012] text-fuchsia-300 hover:bg-[#070018]"
+                          : "bg-purple-700 text-slate-50 hover:bg-purple-600"
                       )}
                       onClick={() => toggleApplied(job.id)}
                     >
@@ -231,7 +230,7 @@ export default function SavedJobsPage() {
                       type="button"
                       size="sm"
                       variant="ghost"
-                      className="h-8 rounded-full px-2 text-[9px] text-slate-500 hover:bg-slate-900 hover:text-rose-400"
+                      className="h-7 rounded-full px-2 text-[8px] text-purple-300/80 hover:bg-purple-950/40 hover:text-fuchsia-300"
                       onClick={() => toggleSave(job.id)}
                     >
                       Remove

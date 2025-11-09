@@ -28,45 +28,43 @@ export interface JobCardProps {
 export const JobCard: React.FC<JobCardProps> = ({ job, isSaved, onPress, onToggleSave }) => {
   return (
     <Card
-      className={
-        cn(
-          "relative mb-3 flex cursor-pointer items-stretch gap-3 rounded-2xl bg-gradient-to-br from-slate-900/90 to-black/95 p-3 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl",
-          "min-h-[72px]"
-        )
-      }
+      className={cn(
+        "relative mb-2.5 flex cursor-pointer items-stretch gap-2 rounded-2xl border border-purple-900/40 bg-gradient-to-br from-[#080114] via-[#05000d] to-[#020008] p-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:border-purple-500/70 hover:shadow-[0_18px_45px_rgba(0,0,0,0.85)]",
+        "min-h-[64px]"
+      )}
       onClick={onPress}
     >
       <div className="flex flex-1 flex-col justify-between">
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-400/80">
+            <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-purple-400/80">
               {job.company}
             </span>
-            <h3 className="mt-0.5 line-clamp-1 text-[15px] font-semibold tracking-[-0.01em] text-slate-50">
+            <h3 className="mt-0.5 line-clamp-1 text-[14px] font-semibold tracking-[-0.01em] text-slate-50">
               {job.title}
             </h3>
           </div>
         </div>
 
-        <div className="mt-2 flex flex-wrap items-center gap-1.5 text-[10px] text-slate-400">
-          <span className="rounded-full bg-slate-900/80 px-2 py-1 leading-none text-slate-300">
+        <div className="mt-1.5 flex flex-wrap items-center gap-1.5 text-[9px] text-purple-200/70">
+          <span className="rounded-full bg-[#05000d] px-2 py-0.5 leading-none text-purple-200/80">
             {job.location}
           </span>
           {job.isRemote && (
-            <span className="rounded-full bg-emerald-500/15 px-2 py-1 leading-none text-emerald-400">
+            <span className="rounded-full bg-purple-900/40 px-2 py-0.5 leading-none text-purple-300">
               Remote
             </span>
           )}
-          <span className="rounded-full bg-slate-900/80 px-2 py-1 leading-none text-sky-400">
+          <span className="rounded-full bg-[#05000d] px-2 py-0.5 leading-none text-purple-300/90">
             {job.employmentType}
           </span>
-          <span className="rounded-full bg-slate-900/80 px-2 py-1 leading-none text-indigo-400">
+          <span className="rounded-full bg-[#05000d] px-2 py-0.5 leading-none text-fuchsia-300/90">
             {job.salary}
           </span>
           {job.tags?.slice(0, 2).map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-slate-950/70 px-2 py-1 leading-none text-[9px] text-slate-400"
+              className="rounded-full bg-[#030008] px-2 py-0.5 text-[8px] leading-none text-purple-400/70"
             >
               {tag}
             </span>
@@ -75,7 +73,7 @@ export const JobCard: React.FC<JobCardProps> = ({ job, isSaved, onPress, onToggl
       </div>
 
       <div
-        className="flex flex-col items-end justify-between gap-2"
+        className="flex flex-col items-end justify-between gap-1.5"
         onClick={(e) => e.stopPropagation()}
       >
         <Button
@@ -83,15 +81,15 @@ export const JobCard: React.FC<JobCardProps> = ({ job, isSaved, onPress, onToggl
           variant={isSaved ? "secondary" : "outline"}
           size="icon"
           className={cn(
-            "h-9 w-9 rounded-full border-slate-700/80 bg-black/60 text-xs text-slate-200 shadow-md",
-            isSaved && "border-emerald-500/40 bg-emerald-500/10 text-emerald-400"
+            "h-7 w-7 rounded-full border-purple-900/70 bg-[#050010]/90 text-[11px] text-purple-200 shadow-md",
+            isSaved && "bg-purple-600/20 text-purple-300"
           )}
           onClick={onToggleSave}
         >
           {isSaved ? "★" : "☆"}
         </Button>
 
-        <span className="text-[9px] font-medium uppercase tracking-[0.14em] text-slate-500">
+        <span className="text-[8px] font-medium uppercase tracking-[0.14em] text-purple-500/80">
           View
         </span>
       </div>
